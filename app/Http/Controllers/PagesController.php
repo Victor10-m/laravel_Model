@@ -17,6 +17,11 @@ class PagesController extends Controller
     }
     public function crear(Request $request){
     //nos permite ener una vista previa de nuestros datos ademas verifica que se manden los datos   // return $request->all();
+        $request->validate([
+            'nombre'=>'required',
+            'descripcion'=>'required'
+        ]);
+        
         $notanueva = new App\Nota;
         $notanueva->nombre = $request->nombre;
         $notanueva->descripcion = $request->descripcion;

@@ -5,7 +5,28 @@
 <div class="container my-4">
     <h1 class="display-4">Notas</h1>
 
+<!-- esta estructura nos manda el mensaje de alerta que que nuestros campos no 
+estan llenos  -->
 
+    @error('nombre')
+        <div class="alert alert-danger">
+        El campo nombre es obligatorio
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+
+      @enderror
+      
+    @error('descripcion')
+        <div class="alert alert-danger">
+        El campo descripcion  es obligatorio
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+
+      @enderror
 
 
 <!-- boton para agregar notas con modal de boostrap -->
@@ -55,8 +76,11 @@
             <!-- formulario de agregar -->
             <form action="{{route('notas.crear')}}" method="POST">
       @csrf
-        <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2">
-        <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2">
+
+        <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2"
+        value="{{ old('nombre') }}">
+        <input  type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2"
+        value="{{ old('descripcion') }}">
         <button  type="submit" class="btn btn-primary btn-block">Guardar</button>
       </form>
     <!-- termina formulario de agregar -->

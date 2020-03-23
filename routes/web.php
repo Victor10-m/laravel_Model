@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', 'PagesController@inicio');
+// Route::get('/', 'PagesController@inicio');
+Route::get('/', 'PagesController@Inicio')->name('inicio');
 
 Route::get('/detalle/{id}', 'PagesController@detalle')->name('notas.detalle');
 
