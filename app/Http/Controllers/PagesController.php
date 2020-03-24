@@ -25,8 +25,27 @@ class PagesController extends Controller
         $notanueva = new App\Nota;
         $notanueva->nombre = $request->nombre;
         $notanueva->descripcion = $request->descripcion;
+        if($request->status){
+            $notanueva->status = 1;
+        }
+        else{
+            $notanueva->status = 0;
+        }
+  
+        
         $notanueva->save();
         return back();
+    }
+    public function editar($id){
+        $nota = App\Nota::findOrFail($id);
+        return view('notas.editar', compact('nota'));  
+    }
+    public function update(Request $request, $id){
+        $notaupdate = App\Nota::findOrFail($id);
+        $notaupdate->nombre = $request->nombre;
+        $notaupdate->descripcion = $request->descripcion;
+        $notaupdate->save();
+        return back()->with('mensaje', 'nota actualizada');
     }
     public function fotos(){
         return view('fotos');

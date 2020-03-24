@@ -1,5 +1,6 @@
 @extends('Plantilla')
 
+
 @section('seccion')
 
 <div class="container my-4">
@@ -40,7 +41,8 @@ estan llenos  -->
       <th scope="col">#id</th>
       <th scope="col">nombre</th>
       <th scope="col">descripcion</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Status</th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -51,7 +53,22 @@ estan llenos  -->
       <a href=" {{route('notas.detalle', $item)}} ">{{$item->nombre}}</td></a>
       
       <td>{{$item->descripcion}}</td>
-      <td>@mdo</td>
+        <td>
+        @if($item->status==1)
+        <input checked=true type="checkbox" id="cbox2" value="second_checkbox">
+        @else
+        <input type="checkbox" id="cbox2" value="second_checkbox">
+        @endif
+         
+
+      </td>      
+      <td>
+      <!-- etiqueta para editar las notas revisar el id de modal para que coinciada c -->
+      <a data-toggle="modal" data-target="#editmodal-{{$item->id}}"
+      href="{{ route('notas.editar',$item )}}" class="btn btn-warning btn-sm">Edita</a>
+
+      @include ('notas.prueba', ["nota"=>$item])
+      </td>
     </tr>
    @endforeach()
  
@@ -81,6 +98,7 @@ estan llenos  -->
         value="{{ old('nombre') }}">
         <input  type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2"
         value="{{ old('descripcion') }}">
+        <label>Estado</label>  <input type="checkbox" name="status" value="1">
         <button  type="submit" class="btn btn-primary btn-block">Guardar</button>
       </form>
     <!-- termina formulario de agregar -->
