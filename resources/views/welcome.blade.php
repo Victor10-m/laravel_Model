@@ -70,7 +70,6 @@ estan llenos  -->
         @else
         <input name="status" type="checkbox" id="cbox2" value="second_checkbox">
         @endif
-         
 
       </td>      
       <td>
@@ -133,5 +132,5 @@ estan llenos  -->
 
 
 
-
+{{ $notas->links() }}
  @endsection
