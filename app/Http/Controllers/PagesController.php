@@ -45,7 +45,12 @@ class PagesController extends Controller
         $notaupdate->nombre = $request->nombre;
         $notaupdate->descripcion = $request->descripcion;
         $notaupdate->save();
-        return back()->with('mensaje', 'nota actualizada');
+        return back()->with('mensaje', 'Nota actualizada');
+    }
+    public function eliminar($id){
+        $notaEliminar = App\Nota::findOrFail($id);
+        $notaEliminar->delete();
+        return back()->with('mensaje', 'Nota eliminada');
     }
     public function fotos(){
         return view('fotos');

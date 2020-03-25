@@ -6,6 +6,16 @@
 <div class="container my-4">
     <h1 class="display-4">Notas</h1>
 
+    @if(session('mensaje'))
+    <div class="alert alert-success"> {{ session('mensaje')}} 
+      
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+          <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+
+    @endif
+
 <!-- esta estructura nos manda el mensaje de alerta que que nuestros campos no 
 estan llenos  -->
 
@@ -68,6 +78,13 @@ estan llenos  -->
       href="{{ route('notas.editar',$item )}}" class="btn btn-warning btn-sm">Edita</a>
       <!-- permite inclui la direcion donde esta nuestro modal  -->
       @include ('notas.prueba', ["nota"=>$item])
+
+        <form class="d-inline" action="{{route('notas.eliminar', $item)}}" method="POST">
+        @method('DELETE')
+        @csrf
+        <button type="submit" class="btn btn-danger btn-sm">Eliminar </button>
+        </form>
+
       </td>
     </tr>
    @endforeach()
