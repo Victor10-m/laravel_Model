@@ -19,7 +19,16 @@
         value="{{ $nota->nombre }}">
         <input  type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2"
         value="{{ $nota->descripcion }}">
+
+        <label> Estado</label>
+        @if($item->status==1)
+        <input name="status" checked=true type="checkbox" id="cbox2" value="second_checkbox">
+        @else
+        <input name="status" type="checkbox" id="cbox2" value="second_checkbox">
+        @endif
+
         <button  type="submit" class="btn btn-primary btn-block">editar</button>
+
       </form>
     <!-- termina formulario de agregar -->
 

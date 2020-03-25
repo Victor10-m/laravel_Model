@@ -25,7 +25,7 @@ class PagesController extends Controller
         $notanueva = new App\Nota;
         $notanueva->nombre = $request->nombre;
         $notanueva->descripcion = $request->descripcion;
-        if($request->status){
+        if($request->input('status')){
             $notanueva->status = 1;
         }
         else{
@@ -44,6 +44,12 @@ class PagesController extends Controller
         $notaupdate = App\Nota::findOrFail($id);
         $notaupdate->nombre = $request->nombre;
         $notaupdate->descripcion = $request->descripcion;
+        if($request->status){
+            $notaupdate->status = 1;
+        }
+        else{
+            $notaupdate->status = 0;
+        }
         $notaupdate->save();
         return back()->with('mensaje', 'Nota actualizada');
     }

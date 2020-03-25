@@ -64,10 +64,11 @@ estan llenos  -->
       
       <td>{{$item->descripcion}}</td>
         <td>
+        <label> Estado</label>
         @if($item->status==1)
-        <input checked=true type="checkbox" id="cbox2" value="second_checkbox">
+        <input name="status" checked=true type="checkbox" id="cbox2" value="second_checkbox">
         @else
-        <input type="checkbox" id="cbox2" value="second_checkbox">
+        <input name="status" type="checkbox" id="cbox2" value="second_checkbox">
         @endif
          
 
