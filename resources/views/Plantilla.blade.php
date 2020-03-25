@@ -11,6 +11,16 @@
     <title>Hello, world!</title>
   </head>
   <body>
+  
+  <a class="btn btn-danger btn-sm float-right" href="JavaScript: document.getElementById('logout').submit()">cerrar sesion</a>
+      <form action="{{ route('logout')}}" id="logout" style="display:none" method="post" >
+      @csrf
+      </form>
+
+  @if(session('info'))
+    <div>{session('info')}</div>
+  @endif
+
   <br>
 
   

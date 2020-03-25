@@ -66,7 +66,7 @@ estan llenos  -->
       <!-- etiqueta para editar las notas revisar el id de modal para que coinciada c -->
       <a data-toggle="modal" data-target="#editmodal-{{$item->id}}"
       href="{{ route('notas.editar',$item )}}" class="btn btn-warning btn-sm">Edita</a>
-
+      <!-- permite inclui la direcion donde esta nuestro modal  -->
       @include ('notas.prueba', ["nota"=>$item])
       </td>
     </tr>
