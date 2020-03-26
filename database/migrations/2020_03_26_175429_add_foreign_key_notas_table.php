@@ -26,7 +26,7 @@ class AddForeignKeyNotasTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down() 
     {
         Schema::table('notas', function (Blueprint $table) {
             $table->dropForeign('notas_users_id_foreign');
