@@ -17,6 +17,7 @@
 
         <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2"
         value="{{ $nota->nombre }}">
+
         <input  type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2"
         value="{{ $nota->descripcion }}">
 
@@ -25,7 +26,19 @@
         <input name="status" checked=true type="checkbox" id="cbox2" value="second_checkbox">
         @else
         <input name="status" type="checkbox" id="cbox2" value="second_checkbox">
-        @endif
+        @endif  <br>
+
+        <label > Clasificacion</label>
+        <select name="clasificacion" id="">
+        <option value="1">Clasificacion 1</option>
+        <option value="2">Clasificacion 2</option>
+        <option value="3">Clasificacion 3</option>
+        </select>
+        <br>
+        <label>Tipo</label>
+        <br>
+        <label>publico</label> <input type="radio" name="tipo" value="publico">
+        <label>privado</label>  <input type="radio" name="tipo" value="privado">
 
         <button  type="submit" class="btn btn-primary btn-block">editar</button>
 

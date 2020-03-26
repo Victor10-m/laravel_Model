@@ -9,13 +9,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+
+    
   </head>
   <body>
 
-
-  
-  
-  <a class="btn btn-danger btn-sm float-right" href="JavaScript: document.getElementById('logout').submit()">cerrar sesion</a>
+  <a class="btn btn-danger btn-sm float-right" 
+  href="JavaScript: document.getElementById('logout').submit()">
+  cerrar sesion
+  </a>
       <form action="{{ route('logout')}}" id="logout" style="display:none" method="post" >
       @csrf
       </form>
@@ -24,6 +26,10 @@
     <div>{session('info')}</div>
   @endif
 
+  <div  class="float-right">
+ <a class="btn btn-toolbar btn-sm">Usuario activo: {{auth()->user()->name}} </a>
+  
+  </div>
   <br>
 
   
@@ -37,7 +43,14 @@
     @yield('seccion')
     </div>
 
-    <div>Footer</div>
+
+  
+ 
+ 
+ 
+ 
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

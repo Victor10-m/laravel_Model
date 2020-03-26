@@ -4,7 +4,7 @@
 @section('seccion')
 
 <div class="container my-4">
-    <h1 class="display-4">Notas</h1>
+   
 
     @if(session('mensaje'))
     <div class="alert alert-success"> {{ session('mensaje')}} 
@@ -52,6 +52,8 @@ estan llenos  -->
       <th scope="col">nombre</th>
       <th scope="col">descripcion</th>
       <th scope="col">Status</th>
+      <th scope="col">Clasificacion</th>
+      <th scope="col">Tipo</th>
       <th scope="col">Acciones</th>
     </tr>
   </thead>
@@ -64,14 +66,15 @@ estan llenos  -->
       
       <td>{{$item->descripcion}}</td>
         <td>
-        <label> Estado</label>
+        
         @if($item->status==1)
         <input name="status" checked=true type="checkbox" id="cbox2" value="second_checkbox">
         @else
         <input name="status" type="checkbox" id="cbox2" value="second_checkbox">
         @endif
-
-      </td>      
+       </td>  
+      <td>{{$item->clasificacion}}</td>  
+      <td> {{$item->tipo}} </td>   
       <td>
       <!-- etiqueta para editar las notas revisar el id de modal para que coinciada c -->
       <a data-toggle="modal" data-target="#editmodal-{{$item->id}}"
@@ -116,6 +119,19 @@ estan llenos  -->
         <input  type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2"
         value="{{ old('descripcion') }}">
         <label>Estado</label>  <input type="checkbox" name="status" value="1">
+        <br>
+        <label > Clasificacion</label>
+        <select name="clasificacion" id="">
+        <option value="1">Clasificacion 1</option>
+        <option value="2">Clasificacion 2</option>
+        <option value="3">Clasificacion 3</option>
+        </select>
+        <br>
+        <label>Tipo</label>
+        <br>
+        <label>publico</label> <input type="radio" name="tipo" value="publico">
+        <label>privado</label>  <input type="radio" name="tipo" value="privado">
+
         <button  type="submit" class="btn btn-primary btn-block">Guardar</button>
       </form>
     <!-- termina formulario de agregar -->
@@ -132,5 +148,4 @@ estan llenos  -->
 
 
 
-{{ $notas->links() }}
  @endsection

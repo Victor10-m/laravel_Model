@@ -8,7 +8,13 @@ use App;
 class PagesController extends Controller
 {
     public function inicio(){
-        $notas = App\Nota::paginate(3);
+        //ahora dentro de la variable mandamos a llamara con una consulta  para asi saber cualoes son las notas con las cuales 
+        //cuena el usuario
+        $notas = App\Nota::join('users', 'users.id', '=', 'notas.users_id')
+        ->select('notas.id','notas.nombre','notas.descripcion','notas.status',
+        'notas.clasificacion','notas.tipo' )
+        ->where('users.id', '=',auth()->user()->id )->get();
+
         return view('welcome', compact('notas'));
     }
     public function detalle($id){
@@ -32,9 +38,11 @@ class PagesController extends Controller
             $notanueva->status = 0;
         }
   
-        
+        $notanueva->clasificacion = $request->clasificacion;  
+        $notanueva->tipo = $request->tipo; 
+        $notanueva->users_id = auth()->user()->id; 
         $notanueva->save();
-        return back();
+        return back()->with('mensaje', 'Nota Guardada');
     }
     public function editar($id){
         $nota = App\Nota::findOrFail($id);
@@ -50,6 +58,8 @@ class PagesController extends Controller
         else{
             $notaupdate->status = 0;
         }
+        $notaupdate->clasificacion = $request->clasificacion;
+        $notaupdate->tipo = $request->tipo;
         $notaupdate->save();
         return back()->with('mensaje', 'Nota actualizada');
     }

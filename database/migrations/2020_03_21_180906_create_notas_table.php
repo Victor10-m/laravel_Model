@@ -14,10 +14,20 @@ class CreateNotasTable extends Migration
     public function up()
     {
         Schema::create('notas', function (Blueprint $table) {
+            
+            $table->engine = 'InnoDB';
+
             $table->Increments('id');
             $table->string('nombre');
             $table->text('descripcion');
+            $table->boolean('status');
+            $table->Integer('clasificacion');
+            $table->text('tipo');
             $table->timestamps();
+
+
+
+      
         });
     }
 
