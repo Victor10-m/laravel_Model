@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function(){
     
 
 });
-
+ 
 
 // Route::get('/', 'PagesController@inicio');
 
