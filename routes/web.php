@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function(){
     
     Route::get('nosotros/{nombre?}', 'PagesController@nosotros')->name('nosotros');
 
+    
+
 });
 
 

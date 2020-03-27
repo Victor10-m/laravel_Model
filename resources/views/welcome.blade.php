@@ -43,9 +43,14 @@ estan llenos  -->
 <!-- boton para agregar notas con modal de boostrap -->
     <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
   Agregar
-</button>
+</button><br>
+<!-- div donde implemento el buscador  -->
+<div class="input-group">
+<span clas="input-group-addon" class="btn-success">Buscar</span>
+<input id="filtrar" type="text" class="form-control" placeholder="buscar">
+</div>
 
-    <table class="table">
+    <table class="table" >
   <thead>
     <tr>
       <th scope="col">#id</th>
@@ -57,7 +62,7 @@ estan llenos  -->
       <th scope="col">Acciones</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="buscar">
   @foreach($notas as $item)
     <tr>
       <th scope="row">{{$item->id}}</th>

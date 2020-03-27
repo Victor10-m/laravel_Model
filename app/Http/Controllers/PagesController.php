@@ -8,13 +8,15 @@ use App;
 class PagesController extends Controller
 {
     public function inicio(){
+       
         //ahora dentro de la variable mandamos a llamara con una consulta  para asi saber cualoes son las notas con las cuales 
         //cuena el usuario
+       
         $notas = App\Nota::join('users', 'users.id', '=', 'notas.users_id')
         ->select('notas.id','notas.nombre','notas.descripcion','notas.status',
         'notas.clasificacion','notas.tipo' )
         ->where('users.id', '=',auth()->user()->id )->get();
-
+       
         return view('welcome', compact('notas'));
     }
     public function detalle($id){
